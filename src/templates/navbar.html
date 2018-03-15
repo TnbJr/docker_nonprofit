@@ -1,0 +1,41 @@
+{% load staticfiles %}
+
+<div class="header-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-6 col-sm-6 text-right fh5co-social">
+                <a href="https://www.facebook.com/Anchored-In-Love-International-Inc-1506401973006706/" class="grow"><i class="fa fa-facebook-square"></i></a>
+                <a href="#" class="grow"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="grow"><i class="fa fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<header id="fh5co-header-section" class="sticky-banner">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'index' %}"><img alt="Brand" src="{% static 'images/ainLogo.jpg' %}"></a>
+                <!-- <a href="{% url 'index' %}" class="navbar-brand">Anchored In Love International</a> -->
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'project:index' %}">Projects</a></li>
+                    <li><a href="{% url 'gallery:index' %}">Gallery</a></li>
+                    <li><a href="{% url 'contact:index' %}">Contact Us</a></li>
+                    <li><a href="{% url 'donate:index' %}">Donate</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+</header>

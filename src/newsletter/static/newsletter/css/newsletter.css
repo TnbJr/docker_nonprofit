@@ -1,0 +1,29 @@
+form#newsletter-form {
+    display: inline-block;
+}
+
+#newsletter-bar{
+	background-color:  #007a00;
+	padding: 20px 0;
+}
+#newsletter-bar span{
+	color: white;
+	vertical-align: bottom;
+}
+
+#newsletter-bar button.btn {
+    color: #fff;
+    line-height: 0.4;
+    background-color: #f4c20d;
+}
+
+#newsletter-bar button.btn:hover {
+    background-color: #f4c20d !important;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+}
+
+input#id_email {
+    height: 100%;
+    color: #191905;
+}

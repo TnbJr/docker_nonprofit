@@ -1,0 +1,58 @@
+{% extends 'base.html' %} 
+{% load staticfiles %}
+{% block content %}
+<div id="image-container" style="background-image: url({% static 'images/viola.jpg' %});">
+</div>
+<div id="donate-section" class="section">
+    <div class="container donate-container">
+        <div class="col-md-12 donation-section">
+            <h1>Donation Form</h1>
+            <span>The average cost to educate a child per year is $350. Help sponsor a child for a year or simply give a donation of any amount.</span>
+        </div>
+        <div class="row">
+                <form method="POST" action="{% url 'donate:index' %}" id="donate-form">
+                    {% csrf_token %}
+                    <div class="col-md-12">
+                        Name:
+                    </div>
+                    <div class="fieldWrapper col-md-6">
+                        {{ form.first_name.errors }} {{ form.first_name }}
+                    </div>
+                    <div class="fieldWrapper col-md-6">
+                        {{ form.last_name.errors }} {{ form.last_name }}
+                    </div>
+                    <div class="fieldWrapper col-md-12">
+                        {{ form.donate_email.errors }}
+                        <label class="donate-form-label" for="{{ form.donate_email.id_for_label }}">*Email:</label>
+                        {{ form.donate_email }}
+                    </div>
+                    <div class="fieldWrapper col-md-3">
+                        {{ form.donation_amount.errors }}
+                        <label class="donate-form-label" for="{{ form.donation_amount.id_for_label }}">*Donation amount ($)</label>
+                        {{ form.donation_amount }}
+                    </div>
+                    <div class="fieldWrapper col-md-12">
+                        {{ form.donation_comment.errors }}
+                        <label class="donate-form-label" for="{{ form.donation_comment.id_for_label }}">Message:</label>
+                        {{ form.donation_comment }}
+                    </div>
+                    <div id="payment" class="col-md-12">
+                    	<h3>Payment Information</h3>
+                    	<span>Enter your payment details below.</span>
+	                    <div class="col-md-12" id="payment-form"></div class="col-md-12">
+                    </div>
+
+                    <input id='client-token' value='{{ client_token }}' />
+                    
+                    <input id="donate-button" type="submit" value="Submit" class="btn btn-default text-center col-md-4" />
+                </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block jquery %}
+{{ block.super }}
+<script src="https://js.braintreegateway.com/js/braintree-2.32.1.min.js"></script>
+<script src="{% static 'donate/js/donate.js' %}"></script>
+{% endblock %}

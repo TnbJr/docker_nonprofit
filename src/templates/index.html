@@ -1,0 +1,89 @@
+{% extends 'base.html' %} 
+{% load staticfiles %} 
+{% block content %}
+<div id="fh5co-wrapper">
+    <div id="fh5co-page">
+        <div id="hero" class="fh5co-hero section">
+            <div class="fh5co-overlay"></div>
+            <div class="fh5co-cover text-center" style="background-image: url({% static 'images/children3.jpg' %})">
+                <div class="desc animate-box">
+                    <h2>Cultivating Lives For A Better Tomorrow</h2>
+                    <span>Our mission and service is dedicated to enriching the lives of underprivileged children across the globe. </span>
+                    <span><a class="btn btn-primary btn-lg" href="{% url 'donate:index' %}">Donate Now</a></span>
+                </div>
+            </div>
+            {% include 'newsletter/newsletter_bar.html' with form=newsletter_form %}
+        </div>
+        <!-- end:header-top -->
+        <div id="fh5co-services-section" class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+                        <h3>About Us</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-4 col-sm-4">
+                        <div class="services animate-box">
+                            <span><i class="fa fa-heart-o"></i></span>
+                            <h3>Spreading Knowledge</h3>
+                            <p>We provide the necessary assistance to ensure that the children we serve strive to attain excellence in economic independence.</p>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="services animate-box">
+                            <span><i class="fa fa-globe"></i></span>
+                            <h3>Global Giving</h3>
+                            <p>Our endeavors ensure that the neediest of children are given an opportunity to become viable, educated and independent adults </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="services animate-box">
+                            <span><i class="fa fa-smile-o fa-3x" aria-hidden="true"></i></span>
+                            <h3>Social Change</h3>
+                            <p>We provide assistance through educational funding nutritional food distribution as well as access to shelter and health care professionals.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="fh5co-portfolio" class="fh5co-section-gray section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 text-center heading-section animate-box">
+                        <h3>Our Projects</h3>
+                    </div>
+                </div>
+                <div class="row row-bottom-padded-md">
+                    <div class="col-md-12">
+                        <ul id="fh5co-portfolio-list">
+                            {% for project in projects %}
+                            <li class="{% cycle 'two-third' 'one-third' 'one-third' 'two-third' %} animate-box" data-animate-effect="fadeIn">
+                                <div class="front" style="background-image: url({{ project.get_image_url }});">
+                                    <a href="{{ project.get_absolute_url }}" class="color-4">
+                                        <div class="case-studies-summary">
+                                            {% if project.sub_title %}
+                                            <span>{{ project.sub_title }}</span> 
+                                            {% else %}
+                                            <span>Give Love</span>
+                                            {% endif %}
+                                            <h2>{{ project.title }}</h2>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include 'events/events.html' with events=events %}
+        <!-- END What we do -->
+    </div>
+    <!-- END fh5co-page -->
+</div>
+{% endblock %}

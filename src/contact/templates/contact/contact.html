@@ -1,0 +1,48 @@
+{% extends 'base.html' %} 
+{% load staticfiles %} 
+{% block content %}
+
+
+<div id="contact-section" class="section">
+	<div class="container contact-container">
+		<div class="col-md-12 text-center heading-section">
+			<h3>Contact Us</h3>
+		</div>
+		<div class="row">
+			<div>
+				<form method="POST" action="{% url 'contact:index' %}" id="contact-form">
+					{% csrf_token %}
+					<div class="fieldWrapper">
+					    {{ form.name.errors }}
+					    <label class="contact-form-label" for="{{ form.name.id_for_label }}">Name:</label>
+					    {{ form.name }}
+					</div>
+					<div class="fieldWrapper">
+					    {{ form.subject.errors }}
+					    <label class="contact-form-label" for="{{ form.subject.id_for_label }}">Subject:</label>
+					    {{ form.subject }}
+					</div>
+					<div class="fieldWrapper">
+					    {{ form.email.errors }}
+					    <label class="contact-form-label" for="{{ form.email.id_for_label }}">Email:</label>
+					    {{ form.email }}
+					</div>
+
+					<div class="fieldWrapper">
+					    {{ form.message.errors }}
+					    <label class="contact-form-label" for="{{ form.message.id_for_label }}">Message:</label>
+					    {{ form.message }}
+					</div>
+					<div class="fieldWrapper">
+					    {{ form.captcha.errors }}
+					    {{ form.captcha }}
+					</div>
+
+					<input id="contact-button" type="submit" value="Submit" class="btn btn-default text-center" />
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

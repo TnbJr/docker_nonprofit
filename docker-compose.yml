@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  nginx_server:
+    build: ./nginx
+    restart: always
+    container_name: nginx_server
+    command: nginx -g "daemon off;"
+    ports:
+      - "80:80"
+    volumes:
+      - ./src/staticfiles:/var/www/static/
+    depends_on:
+      - django_web
+  db:
+    restart: always
+    image: postgres
+    container_name: charity_db
+    ports:
+      - "5432:5432"
+  django_web:
+    build: ./src
+    restart: always
+    command: bash -c "cd src && python3 manage.py makemigrations --settings=project.settings.prod && python3 manage.py migrate --settings=project.settings.prod && python3 manage.py collectstatic --settings=project.settings.prod --noinput && gunicorn project.wsgi:application -w 2 -b :8000"
+    container_name: django_web
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    env_file:
+      - ./src/.env
+

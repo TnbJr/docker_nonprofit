@@ -1,0 +1,24 @@
+.gallery-image li {
+    list-style: none;
+    padding: 5px;
+    max-width: 219px;
+    min-height: 219px;
+}
+
+#gallery-section{
+	margin: 60px 40px;
+	min-height: 400px;
+}
+
+.group img.img-responsive {
+    height: 220px;
+    width: 100%;
+}
+
+h3.title-small {
+    color: #6cb16a;
+}
+
+.content-detail{
+	color: #191905;
+}

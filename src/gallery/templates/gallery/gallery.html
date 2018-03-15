@@ -1,0 +1,29 @@
+{% extends 'base.html' %} 
+{% load staticfiles %}
+{% block content %}
+
+<section id="gallery-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <h3 class="title-small">
+                  <span>Our Gallery</span>
+                </h3>
+                <p class="content-detail">
+                    Our Gallery shows the work we have done throughtout our journey to changes lives.
+                    <br>
+                </p>
+            </div>
+            <div class="col-sm-9 content-right">
+                <ul class="gallery-image row">
+                    {% for pic in gallery %}
+                        <li class="col-sm-3 col-xs-6 group">
+                            <a href="{{ pic.image.url }}" class="group"><img alt="image" src="{{ pic.image.url }}" class="img-responsive">
+                        </li>
+                    {% endfor%}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

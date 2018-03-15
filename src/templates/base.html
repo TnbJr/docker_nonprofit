@@ -1,0 +1,29 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Anchored In Love International</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
+    {% include 'css.html' %}
+    <!-- Modernizr JS -->
+</head>
+
+<body data-spy="scroll" data-target="#fh5co-menu-wrap">
+    {% include 'navbar.html' %} 
+    {% block content %}
+    {% endblock %} 
+    {% include 'footer.html' %} 
+
+    {% block  jquery%}
+    {% include 'javascript.html' %}
+    {% endblock %}
+    
+</body>
+
+</html>

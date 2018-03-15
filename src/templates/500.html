@@ -1,0 +1,41 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Anchored In Love International</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
+	{% include 'css.html' %}
+  <body>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="inner cover">
+            <h1 class="cover-heading">500 Server Error </h1>
+			<p class="lead">
+              The Page requested can not be found
+            </p>
+            <p class="lead">
+              <a href="{% url 'index' %}" class="btn btn-lg btn-default">Return Home</a>
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+	 {% block  jquery%}
+    {% include 'javascript.html' %}
+    {% endblock %} 
+  </body>
+</html>

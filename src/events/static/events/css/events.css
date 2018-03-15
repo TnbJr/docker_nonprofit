@@ -1,0 +1,28 @@
+.event-container{
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+
+
+.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+    padding-right: 70px;
+    padding-top: 20px;
+    padding-bottom: 0px;
+    line-height: 1.42857;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+    width: 30px;
+}
+
+.table-hover > tbody > tr:hover {
+    background-color: #fae69e;
+}
+
+.table thead th {
+    color: #6cb16a;
+}
+
+.table{
+	font-size: 16px;
+    color: #191905;
+}

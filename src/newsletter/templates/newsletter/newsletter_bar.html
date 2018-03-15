@@ -1,0 +1,16 @@
+ {% load crispy_forms_tags %}
+
+<div id="newsletter-bar">
+	 <div class="row">
+      <div class="col-md-8 col-md-offset-4 col-xs-6 col-xs-offset-3" >
+        <span>Stay Connected With Us</span>
+        <form class="form-inline" role="form" action="{% url 'newsletter:index' %}" method="POST" id="newsletter-form">
+          {% csrf_token %}
+          <div class="form-group">
+            {{ form.newsletter_email }}
+          </div>
+          <button type="submit" class="btn" id="newsletter-btn">Sign Up</button>
+        </form>
+      </div>
+  </div>
+</div>

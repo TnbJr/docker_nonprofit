@@ -1,0 +1,8 @@
+Django==1.8.17
+psycopg2==2.7.3
+gunicorn==19.6.0
+django-crispy-forms==1.6.1
+django-debug-toolbar==1.8
+Pillow==4.1.1
+django-simple-captcha==0.5.5
+braintree==3.37.2

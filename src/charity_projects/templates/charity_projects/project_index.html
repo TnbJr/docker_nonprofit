@@ -1,0 +1,61 @@
+{% extends 'base.html' %} 
+{% load staticfiles %} 
+{% block content %}
+<section id="project-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <h3 class="title-small">
+                  <span>Our Projects</span>
+                </h3>
+                <p class="content-detail ">
+                    Our Project span across the globe, we have helped changes lives for children in Africa, Europe, Central America, and the West Indies. 
+                    <br>
+                </p>
+            </div>
+            <div class="col-sm-9 content-right">
+                <ul id="fh5co-portfolio-list">
+                    {% for project in projects %}
+                    <li class="{% cycle 'two-third' 'one-third' 'one-third' 'two-third' %} animate-box" data-animate-effect="fadeIn">
+                        <div class="front" style="background-image: url({{ project.get_image_url }});">
+                            <a href="{{ project.get_absolute_url }}" class="color-4">
+                                <div class="case-studies-summary">
+                                    <span>Our Projects</span>
+                                    <h2>{{ project.title }}</h2>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <nav aria-label="Page navigation" class="text-center">
+                  <ul class="pagination">
+                  {% if projects.has_previous %}
+                    <li>
+                      <a href="?page={{ projects.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+                    {% endif %}
+                    {% for page in projects.paginator.page_range %}
+                                         {% if projects.number == page %}
+                                              <li class="active"><a href="?page={{ page }}">{{ page }}</a></li>
+                                          {% else %}
+                                              <li><a href="?page={{ page }}">{{ page }}</a></li>
+                                          {% endif %}
+                                    {% endfor %}
+
+                    {% if projects.has_next %}
+                    <li>
+                      <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                    </li>
+                    {% endif %}
+                  </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} "col-md-9 content-right"
