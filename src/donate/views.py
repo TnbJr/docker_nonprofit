@@ -6,16 +6,24 @@ from django.views.generic import View
 from django.http import JsonResponse
 from .forms import DonateForm
 
-if settings.DEBUG:
-	braintree.Configuration.configure(braintree.Environment.Sandbox,
-	  merchant_id=settings.BRAINTREE_MERCHANT_ID,
-	  public_key=settings.BRAINTREE_PUBLIC,
-	  private_key=settings.BRAINTREE_PRIVATE)
-else:
-	braintree.Configuration.configure(braintree.Environment.Production,
-	  merchant_id=settings.BRAINTREE_MERCHANT_ID,
-	  public_key=settings.BRAINTREE_PUBLIC,
-	  private_key=settings.BRAINTREE_PRIVATE)
+braintree.Configuration.configure(braintree.Environment.Sandbox,
+  merchant_id=settings.BRAINTREE_MERCHANT_ID,
+  public_key=settings.BRAINTREE_PUBLIC,
+  private_key=settings.BRAINTREE_PRIVATE)
+
+
+# Uncomment this when braintree production is setup
+
+# if settings.DEBUG:
+# 	braintree.Configuration.configure(braintree.Environment.Sandbox,
+# 	  merchant_id=settings.BRAINTREE_MERCHANT_ID,
+# 	  public_key=settings.BRAINTREE_PUBLIC,
+# 	  private_key=settings.BRAINTREE_PRIVATE)
+# else:
+# 	braintree.Configuration.configure(braintree.Environment.Production,
+# 	  merchant_id=settings.BRAINTREE_MERCHANT_ID,
+# 	  public_key=settings.BRAINTREE_PUBLIC,
+# 	  private_key=settings.BRAINTREE_PRIVATE)
 
 
 

@@ -9,7 +9,8 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./src/staticfiles:/var/www/static/
+      - static:/usr/src/app/staticfiles
+      - media:/usr/src/app/mediafiles
     depends_on:
       - django_web
   db:
@@ -21,14 +22,18 @@ services:
   django_web:
     build: ./src
     restart: always
-    command: bash -c "cd src && python3 manage.py makemigrations --settings=project.settings.prod && python3 manage.py migrate --settings=project.settings.prod && python3 manage.py collectstatic --settings=project.settings.prod --noinput && gunicorn project.wsgi:application -w 2 -b :8000"
+    command: bash -c "python3 manage.py migrate && python3 manage.py makemigrations && gunicorn project.wsgi:application -w 2 -b :8000"
     container_name: django_web
-    volumes:
-      - .:/code
     ports:
       - "8000:8000"
     depends_on:
       - db
+    volumes:
+      - static:/usr/src/app/staticfiles
+      - media:/usr/src/app/mediafiles
     env_file:
       - ./src/.env
 
+volumes:
+  static:
+  media:
