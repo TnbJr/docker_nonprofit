@@ -17,12 +17,14 @@ services:
     restart: always
     image: postgres
     container_name: charity_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
     ports:
       - "5432:5432"
   django_web:
     build: ./src
     restart: always
-    command: bash -c "python3 manage.py migrate && python3 manage.py makemigrations && gunicorn project.wsgi:application -w 2 -b :8000"
+    command: bash -c "python3 manage.py makemigrations && python3 manage.py migrate &&  python3 manage.py collectstatic --noinput && gunicorn project.wsgi:application -w 2 -b :8000 --reload"
     container_name: django_web
     ports:
       - "8000:8000"
@@ -37,3 +39,4 @@ services:
 volumes:
   static:
   media:
+  pgdata:
